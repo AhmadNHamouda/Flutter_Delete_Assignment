@@ -9,10 +9,10 @@ class InCompleteTasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return ListView.builder(
-        itemCount: tasksList.where((element) => !element.isCompleted).length,
+        itemCount: tasksList.where((element) => !element.isComplete).length,
         itemBuilder: (context, index) {
           return TaskWidget(tasksList
-              .where((element) => !element.isCompleted)
+              .where((element) => !element.isComplete)
               .toList()[index],fun);
         });
   }

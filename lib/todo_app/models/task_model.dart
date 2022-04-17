@@ -1,5 +1,5 @@
 class Task {
   String title;
-  bool isCompleted;
-Task(this.title,[this.isCompleted=false]);
+  bool isComplete;
+  Task(this.title, [this.isComplete = false]);
 }

@@ -1,13 +1,24 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:state_managment/news_app/news_app.dart';
+import 'package:state_managment/provider_test/my_first_provider.dart';
 import 'package:state_managment/todo_app/pages/todo_home_page.dart';
 
 void main() {
-  runApp(MaterialApp(
-    theme: ThemeData.light(),
-    home: TodoHomePage()));
+  runApp(Provider<MyFirstProvider>(
+    create: (context) => MyFirstProvider(), // singelton
+    child: MaterialApp(theme: ThemeData.light(), home: ProviderText()),
+  ));
+}
+
+class ProviderText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(body:Center(child: Text(Provider.of<MyFirstProvider>(context).name)));
+  }
 }
 
 class LoginScreen extends StatefulWidget {
@@ -20,9 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   changesIsChecked() {
     isChecked = !isChecked;
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   @override

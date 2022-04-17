@@ -11,10 +11,12 @@ class TodoHomePage extends StatefulWidget {
 }
 
 class _TodoHomePageState extends State<TodoHomePage> {
-  changeTaskCompleteness(Task task) {
+  updateTasCompleteness(Task task) {
     int index = tasksList.indexOf(task);
-    tasksList[index].isCompleted = !tasksList[index].isCompleted;
-    setState(() {});
+    tasksList[index].isComplete = !tasksList[index].isComplete;
+    setState(() {
+      
+    });
   }
 
   @override
@@ -24,29 +26,26 @@ class _TodoHomePageState extends State<TodoHomePage> {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('TODO APP'),
-            bottom: const TabBar(tabs: [
-              Tab(
-                icon: Icon(Icons.list),
-                text: 'All Tasks',
-              ),
-              Tab(
-                icon: Icon(Icons.done),
-                text: 'Complete Tasks',
-              ),
-              Tab(
-                icon: Icon(Icons.cancel),
-                text: 'InComplete Tasks',
-              )
-            ]),
+            title: const Text('Todo App'),
+            bottom: const TabBar(
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.list),
+                ),
+                Tab(
+                  icon: Icon(Icons.done),
+                ),
+                Tab(
+                  icon: Icon(Icons.cancel),
+                ),
+              ],
+            ),
           ),
-          body: TabBarView(
-            children: [
-              AllTasksScreen(changeTaskCompleteness),
-              CompleteTasksScreen(changeTaskCompleteness),
-              InCompleteTasksScreen(changeTaskCompleteness)
-            ],
-          ),
+          body: TabBarView(children: [
+            AllTasksScreen(updateTasCompleteness),
+            CompleteTasksScreen(updateTasCompleteness),
+            InCompleteTasksScreen(updateTasCompleteness)
+          ]),
         ));
   }
 }
