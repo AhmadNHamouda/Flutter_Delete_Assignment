@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:state_managment/todo_app/data/tasks_data.dart';
 import 'package:state_managment/todo_app/models/task_model.dart';
 import 'package:state_managment/todo_app/pages/all_tasks.dart';
 import 'package:state_managment/todo_app/pages/complete_tasks.dart';
@@ -11,13 +10,7 @@ class TodoHomePage extends StatefulWidget {
 }
 
 class _TodoHomePageState extends State<TodoHomePage> {
-  updateTasCompleteness(Task task) {
-    int index = tasksList.indexOf(task);
-    tasksList[index].isComplete = !tasksList[index].isComplete;
-    setState(() {
-      
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +35,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
             ),
           ),
           body: TabBarView(children: [
-            AllTasksScreen(updateTasCompleteness),
-            CompleteTasksScreen(updateTasCompleteness),
-            InCompleteTasksScreen(updateTasCompleteness)
+            AllTasksScreen(),
+            CompleteTasksScreen(),
+            InCompleteTasksScreen()
           ]),
         ));
   }
